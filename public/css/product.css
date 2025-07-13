@@ -1,0 +1,106 @@
+:root {
+    --primary-color: #1e3a8a;
+    --accent-color: #facc15;
+    --light-bg: #f9fafb;
+    --text-dark: #111827;
+    --card-bg: #ffffff;
+}
+
+/* General styling */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+}
+
+/* Product list grid layout */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 cards per row */
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.product-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    /* enhanced shadow */
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* Title */
+.product-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* Description */
+.product-desc {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+/* Image */
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    /* subtle image shadow */
+    transition: box-shadow 0.3s ease;
+}
+
+.product-card img:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    /* deeper on hover */
+}
+/* Button */
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3b5998;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 900px) {
+    .product-list {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 per row on tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .product-list {
+        grid-template-columns: 1fr;
+        /* 1 per row on mobile */
+    }
+}
