@@ -182,6 +182,9 @@ app.use('/', (req, res, next) => {
     path: '/admin/add-product'
   })
 });
+
+
+
 app.listen(3000, () => {
   console.log('Server running at http://localhost:3000');
 });

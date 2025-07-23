@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" class="smooth-scroll">
+
+<head>
+    <%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/cart.css" />
+    <script src="https://kit.fontawesome.com/a2e00e8b1c.js" crossorigin="anonymous"></script>
+    <title>Your Cart</title>
+</head>
+
+<body>
+    <%- include('../includes/UserNavigation.ejs') %>
+
+    <section class="cart-hero">
+        <div class="container">
+            <h1 class="cart-title animate-slide-up">Your Shopping Cart</h1>
+            <p class="cart-subtitle fade-in">Review your selected items before checking out</p>
+        </div>
+    </section>
+
+    <section class="cart-section">
+        <div class="container">
+            <% if (cart && cart.length > 0) { %>
+            <div class="cart-grid">
+                <% cart.forEach(item => { %>
+                <div class="cart-card animate-fade-in">
+                    <img src="<%= item.imageUrl %>" alt="<%= item.title %>" class="cart-img" />
+                    <div class="cart-details">
+                        <h3 class="cart-item-title"><%= item.title %></h3>
+                        <p class="cart-item-desc"><%= item.description %></p>
+                        <p class="cart-price">$<%= parseFloat(item.price).toFixed(2) %></p>
+                        <form action="/shop/remove-from-cart" method="POST">
+                            <input type="hidden" name="productId" value="<%= item.id %>">
+                            <button type="submit" class="btn-remove">
+                                <i class="fas fa-trash-alt"></i> Remove
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+
+            <div class="cart-summary slide-in-bottom">
+                <h2>Total: <span class="highlight">$<%= totalPrice.toFixed(2) %></span></h2>
+                <a href="/shop/checkout" class="btn-checkout">Proceed to Checkout</a>
+            </div>
+            <% } else { %>
+            <div class="cart-empty fade-in">
+                <i class="fas fa-shopping-cart"></i>
+                <h2>Your cart is empty!</h2>
+                <a href="/shop" class="btn-back">← Continue Shopping</a>
+            </div>
+            <% } %>
+        </div>
+    </section>
+
+<%- include('../includes/end.ejs') %>
+</body>
+
+</html>

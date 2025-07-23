@@ -91,7 +91,30 @@
 
 
 
-//section 99 by adding mvc transefer the render to controller 
+// //section 99 by adding mvc transefer the render to controller
+// const express = require('express');
+// const path = require('path');
+
+// //const { title } = require('process');
+
+// const router = express.Router();
+
+// const productController = require('../Controllers/shop');
+
+//   // Get => /admin/add-product
+// router.get('/add-product', productController.getAddproducts);
+
+//   // Get => /admin/product
+// router.get('/product', productController.getAddproducts);
+
+// // post => /admin/add-product
+// router.post('/add-product', productController.postAddproducts);
+// module.exports =router;
+
+
+
+
+//section 110 line 125 
 const express = require('express');
 const path = require('path');
 
@@ -99,15 +122,16 @@ const path = require('path');
 
 const router = express.Router();
 
-const productController = require('../Controllers/products');
+const adminController = require('../Controllers/admin');
 
   // Get => /admin/add-product
-router.get('/add-product', productController.getAddproducts);
+router.get('/add-product', adminController.getAddproducts);
 
+  // Get => /admin/product
+router.get('/product',adminController.GetProducts);
 
-router.post('/add-product', productController.postAddproducts);
+// post => /admin/add-product
+router.post('/add-product', adminController.postAddproducts);
 module.exports =router;
-
-
 
 

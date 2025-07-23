@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" class="smooth-scroll">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase - Premium Shopping Experience</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/landing.css">
+</head>
+
+<body class="gpu-accelerated">
+    <%- include('../includes/Useravigation.ejs') %>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="logo">ShopEase</div>
+        <button class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav id="mainNav">
+            <ul>
+                
+                <li><a href="#hero" class="nav-link <%= path === '/' ? 'active' : '' %>">Home</a></li>
+                <li><a href="#products" class="nav-link <%= path === '/products' ? 'active' : '' %>">Featured</a></li>
+                <li><a href="#about" class="nav-link <%= path === '/about' ? 'active' : '' %>">About</a></li>
+                <li><a href="#contact" class="nav-link <%= path === '/contact' ? 'active' : '' %>">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title heading-display heading-primary">
+                    Discover Your Next Favorite Product
+                </h1>
+                <p class="hero-subtitle text-large">
+                    Exclusive deals, curated collections, and more
+                </p>
+                <a href="#products" class="btn-hero">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    Shop Now
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="products">
+        <div class="container">
+            <h2 class="section-title heading-secondary">
+                Our Featured Products
+            </h2>
+
+            <% if (prods.length > 0) { %>
+            <div class="product-grid">
+                <% for (let product of prods) { %>
+                <article class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="<%= product.imageUrl %>" alt="<%= product.title %>" loading="lazy">
+                        <% if (product.badge) { %>
+                        <span class="product-badge"><%= product.badge %></span>
+                        <% } %>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title"><%= product.title %></h3>
+                        <p class="product-description"><%= product.description %></p>
+                        <div class="product-price">
+                            $<%= parseFloat(product.price).toFixed(2) %>
+                            <% if (product.originalPrice) { %>
+                            <span class="original-price">$<%= parseFloat(product.originalPrice).toFixed(2) %></span>
+                            <% } %>
+                        </div>
+                    <form action="/shop/cart" method="POST">
+                        <input type="hidden" name="productId" value="<%= product.id %>">
+                        <button type="submit" class="btn-product">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </form>
+
+                    </div>
+                </article>
+                <% } %>
+            </div>
+            <% } else { %>
+            <div class="text-center">
+                <p>No Products Found!</p>
+            </div>
+            <% } %>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section features" id="about">
+        <div class="container">
+            <h2 class="section-title heading-secondary">
+                Why Choose Us?
+            </h2>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3 class="feature-title heading-tertiary">Fast & Secure Shipping</h3>
+                    <p class="feature-description">Get your orders delivered quickly with our reliable shipping
+                        partners.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title heading-tertiary">24/7 Customer Support</h3>
+                    <p class="feature-description">Our team is always ready to assist you with any questions or
+                        concerns.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="feature-title heading-tertiary">Easy Returns</h3>
+                    <p class="feature-description">Not satisfied? Our hassle-free return policy has you covered.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        // Mobile navigation toggle
+        document.getElementById('navToggle').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+    <!-- Contact Section -->
+    <section class="section contact-section reveal" id="contact">
+        <div class="container">
+            <h2 class="section-title heading-secondary">Get In Touch</h2>
+    
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Cityville</p>
+                    <p><i class="fas fa-envelope"></i> support@shopease.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-clock"></i> Mon - Fri: 9am - 6pm</p>
+                </div>
+    
+                <form action="/contact" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-product">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+<%- include('../includes/end.ejs') %>

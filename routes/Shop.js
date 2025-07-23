@@ -41,9 +41,16 @@ const path = require('path');
 const router = express.Router();
 
 
-const productController = require('../Controllers/products');
+const shopController = require('../Controllers/shop');
+
+
+
+router.get('/products',shopController.GetShopproducts);
+router.use('/cart',shopController.GetCart);
+router.get('/checkout', shopController.GetCheckout);
+
 // All methods => /shop/
-router.use('/',productController.GetShopproducts);        //hena nadah 3ala controller w da5l mno 3al function 3ala tool
+router.get('/',shopController.GetIndex);        //hena nadah 3ala controller w da5l mno 3al function 3ala tool
 
 module.exports = router;
 

@@ -1,0 +1,13 @@
+<header class="navbar">
+    <div class="logo">My Shop</div>
+    <nav>
+        <ul>
+            <li><a href="/admin/Editproducts" class="<%= path === '/admin/Editproducts' ? 'active' : '' %>">AdminEditProducts</a></li> <!-- this for edit,delete products .. -->
+            <li><a href="/admin/add-product" class="<%= path === '/admin/add-product' ? 'active' : '' %>">AdminAddProduct</a>
+            </li><li><a href="/shop" class="<%= path === '/shop' ? 'active' : '' %>">shop</a></li>
+            <li><a href="/shop/Products" class="<%= path === '/shop/Products' ? 'active' : '' %>">Products</a></li>
+            <li><a href="/shop/Cart" class="<%= path === '/shop/Cart' ? 'active' : '' %>">Cart</a></li>
+            <li><a href="/shop/Checkout" class="<%= path === '/shop/Checkout' ? 'active' : '' %>">Checkout</a></li>
+        </ul>
+    </nav>
+</header>

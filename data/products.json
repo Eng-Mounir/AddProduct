@@ -1,0 +1,38 @@
+[
+  {
+    "title": "laptop",
+    "description": "sweet laptop",
+    "imageUrl": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+    "price": "300"
+  },
+  {
+    "title": "burger",
+    "description": "sweet burger",
+    "imageUrl": "https://images.unsplash.com/photo-1550547660-d9450f859349",
+    "price": "3"
+  },
+  {
+    "title": "laptop",
+    "description": "macbook",
+    "imageUrl": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+    "price": "3000"
+  },
+  {
+    "title": "book2",
+    "description": "faf",
+    "imageUrl": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+    "price": "222"
+  },
+  {
+    "title": "Car",
+    "description": "bmw M5 ",
+    "imageUrl": "https://www.motortrend.com/uploads/2022/10/2023-BMW-M5-exterior-8.jpg",
+    "price": "55000"
+  },
+  {
+    "title": "makeup",
+    "description": "perfect makeup good quality high quality fav pepe",
+    "imageUrl": "https://png.pngtree.com/background/20230414/original/pngtree-makeup-skin-care-products-cosmetics-beauty-photography-advertising-background-picture-image_2424108.jpg",
+    "price": "10"
+  }
+]
